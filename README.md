@@ -4,48 +4,7 @@
 Game Pong untuk 2-Player menggunakan deteksi warna telapak tangan menggunakan **OpenCV** melalui kamera web sebagai input penggerak paddle.
 Dibuat dengan menggunakan **NumPy** untuk operasi piksel manual dan **OpenCV** hanya untuk imread, imshow, VideoCapture.
 
-<<<<<<< HEAD
 ![Menu](./guide/00_menu.png)
-=======
-## Requirements
-- Python 3.8+
-- numpy
-- opencv-python
-
-```
-pip install numpy opencv-python
-```
-
-## Running
-```
-python main.py
-```
-
-## Controls
-
-| Key | Action |
-|-----|--------|
-| **C** | Calibrate skin colour (menu only) |
-| **M** | Toggle picture-in-picture mask preview |
-| **ESC** | Exit from menu |
-
-### Gameplay
-- **No keyboard or mouse gameplay.** Both players control paddles with their palms.
-- Stand facing the camera. Left player uses the left side of the frame, right player uses the right side.
-- Move your palm up and down to control your paddle.
-- Hold your palm over a button for 1 second to press it.
-- First player to 7 points wins.
-
-## Calibration
-1. From the menu, press **C** to enter calibration mode.
-2. Place your open palm in the centre box on screen.
-3. Make sure your palm fills most of the box.
-4. Press **C** again to capture the colour.
-5. Use consistent, even lighting. Avoid backlighting.
-6. If detection is poor, recalibrate or adjust lighting.
-7. Keep your face outside the active detection zones (far left and far right of the camera view).
-8. A plain background behind your hands works best.
->>>>>>> cd34a8f5ec3b677cad1a6f180b50bff5172da716
 
 ## Project Structure
 
@@ -60,7 +19,6 @@ python main.py
 | `ui.py` | Button dwell logic, screen layouts |
 | `asset/` | Image assets (ball, paddle, buttons, background) |
 
-<<<<<<< HEAD
 ## Requirements
 - Python 3.8+
 - numpy
@@ -133,9 +91,4 @@ Seluruh operasi piksel dan visi komputer pada game ini diimplementasikan secara 
 | **9** | **Citra Integral / Summed-Area Table (P3)** | Menggunakan citra integral 2D (`np.cumsum` ganda) untuk menghitung jumlah piksel dalam jendela kotak (*box sum*) secara konstan $O(1)$, digunakan untuk mencari titik terpadat (*densest seed point*) pada area tangan secara instan. | [`vision.py`](vision.py#L102-L119) (`_integral_image`, `_box_sum`) |
 | **10** | **Ekstraksi Komponen Terhubung / Region Growing (P5)** | Algoritma *Connected Components* manual berbasis *seeded region growing*: menanam benih (*seed*) pada titik densitas tertinggi, lalu menumbuhkannya secara berulang menggunakan dilasi bersyarat $(A \oplus B) \cap \text{Mask}$ hingga konvergen untuk mengisolasi tangan dari noise sekitar. | [`vision.py`](vision.py#L122-L160) (`largest_blob`) |
 | **11** | **Ekstraksi Fitur Spasial: Momen & Centroid (P1 & P5)** | Menghitung momen spasial orde pertama untuk mendapatkan koordinat pusat massa (*Centroid*) $\bar{y} = \frac{1}{N} \sum y_i$ dan $\bar{x} = \frac{1}{N} \sum x_i$ dari mask tangan sebagai representasi posisi paddle dan kursor UI. | [`vision.py`](vision.py#L179-L182) (`HandTracker.update`) & [`L208-L211`](vision.py#L208-L211) (`CursorTracker.update`) |
-| **12** | **Flood-Fill Alpha Extraction (P5)** | Pembuatan transparansi mask otomatis dari sudut citra tombol/bola menggunakan ekspansi tetangga (*flood-fill 4-connectivity*) pada piksel latar belakang putih. | [`assets.py`](assets.py#L10-L38) (`_flood_fill_alpha`) |
-=======
-## Constraints
-- Only `cv2.imread`, `cv2.imshow`, `cv2.VideoCapture`, `cv2.waitKey`, `cv2.namedWindow`, `cv2.destroyAllWindows` are used from OpenCV.
-- All pixel operations are manual NumPy: colour conversion, thresholding, morphology, blob detection, sprite blitting, text rendering.
->>>>>>> cd34a8f5ec3b677cad1a6f180b50bff5172da716
+| **12** | **Flood-Fill Alpha Extraction (P5)** | Pembuatan transparansi mask otomatis dari sudut citra tombol/bola menggunakan ekspansi tetangga (*flood-fill 4-connectivity*) pada piksel latar belakang putih. | [`assets.py`](assets.py#L10-L38) (`_flood_fill_alpha`) |a716
