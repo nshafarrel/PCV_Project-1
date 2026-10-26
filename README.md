@@ -10,7 +10,7 @@ Built entirely with **NumPy** for pixel operations and minimal **OpenCV** for ca
 - opencv-python
 
 ```
-pip install -r requirements.txt
+pip install numpy opencv-python
 ```
 
 ## Running
@@ -33,7 +33,7 @@ python main.py
 - Hold your palm over a button for 1 second to press it.
 - First player to 7 points wins.
 
-## Calibration Tips
+## Calibration
 1. From the menu, press **C** to enter calibration mode.
 2. Place your open palm in the centre box on screen.
 3. Make sure your palm fills most of the box.
@@ -54,11 +54,8 @@ python main.py
 | `vision.py` | BGR→HSV, skin mask, morphology, blob detection |
 | `game.py` | Ball physics, paddle state, swept collision |
 | `ui.py` | Button dwell logic, screen layouts |
-| `check_rules.py` | Source scanner for forbidden cv2 usage |
 | `asset/` | Image assets (ball, paddle, buttons, background) |
 
-## Course Constraints
+## Constraints
 - Only `cv2.imread`, `cv2.imshow`, `cv2.VideoCapture`, `cv2.waitKey`, `cv2.namedWindow`, `cv2.destroyAllWindows` are used from OpenCV.
 - All pixel operations are manual NumPy: colour conversion, thresholding, morphology, blob detection, sprite blitting, text rendering.
-- No per-pixel Python loops. All operations use vectorized slicing and boolean masks.
-- Run `python check_rules.py` to verify compliance.
